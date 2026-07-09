@@ -1923,23 +1923,27 @@ function showSourceBadge(source){
 }
 
 async function loadMenu(){
-  const isValid=t=>t.trim().length>100&&t.includes('\n')&&(t.includes('secção')||t.includes('section'));
+  const isValid=t=>t.trim().length>100&&t.includes('\n')&&(t.includes('secção')||t.includes('section'))&&!t.trim().startsWith('<');
 
   // 1) Google Apps Script - lê directamente da Sheet
+  if(APPS_SCRIPT_URL){
   try{
     const res=await fetch(APPS_SCRIPT_URL,{signal:AbortSignal.timeout(15000)});
     if(res.ok){const t=await res.text();if(isValid(t)){buildMenu(parseCSV(t));showSourceBadge('sheet');return;}}
   }catch(e){console.warn('Apps Script unavailable:',e.message);}
+  }
 
   // 2) Embedded FALLBACK_CSV - mostra menu imediatamente
   buildMenu(parseCSV(FALLBACK_CSV));
   showSourceBadge('embedded');
 
   // 3) menu_data.csv no GitHub - actualiza em background se disponível
+  if(CSV_FILENAME){
   try{
     const res=await fetch(CSV_FILENAME+'?v='+Date.now(),{signal:AbortSignal.timeout(5000)});
     if(res.ok){const t=await res.text();if(isValid(t)){buildMenu(parseCSV(t));showSourceBadge('csv');return;}}
   }catch(e){console.warn('CSV unavailable:',e.message);}
+  }
 }
 
 function showSec(id,btn){
