@@ -2013,6 +2013,7 @@ function setDon(btn,type){
 }
 
 (function init(){
+  function run(){
   try{
     const lang=localStorage.getItem('mLang')||'pt';
     const theme=localStorage.getItem('mTheme')||'dark';
@@ -2058,6 +2059,12 @@ function setDon(btn,type){
       setTimeout(applyNow, 50);
     }
   })();
+  } // end run()
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
 })();
 
 const FALLBACK_CSV = `secção,subsecção,nome_pt,nome_en,nome_fr,descricao_pt,descricao_en,descricao_fr,preco_dose,preco_meia,preco_terceiro,etiqueta_dose,etiqueta_meia,etiqueta_terceiro,alergenios,tipo,estado,destaque
