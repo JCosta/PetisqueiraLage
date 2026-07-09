@@ -1,0 +1,264 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://unpkg.com/tabler-icons@latest/iconfont/tabler-icons.min.css');
+*{box-sizing:border-box;margin:0;padding:0;}
+.w{font-family:'Inter',sans-serif;background:#0d0b08;color:#e8dfc8;}
+.hero{background:#110e08;padding:2.5rem 2rem 2rem;border-bottom:1px solid rgba(201,169,110,.15);}
+.logo-row{display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem;}
+.logo-b{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#c9a96e,#e8c87a);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.logo-t{font-family:'Playfair Display',serif;font-size:.75rem;color:rgba(201,169,110,.75);letter-spacing:.15em;text-transform:uppercase;}
+.eyebrow{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,169,110,.55);margin-bottom:.6rem;}
+.h1{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;line-height:1.2;color:#f0e6c8;margin-bottom:.65rem;}
+.h1 span{color:#c9a96e;}
+.hsub{font-size:.85rem;color:rgba(232,223,200,.55);line-height:1.65;}
+.sec{padding:1.6rem 2rem;}
+.sec+.sec{border-top:1px solid rgba(201,169,110,.08);}
+.lbl{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,169,110,.45);font-weight:600;margin-bottom:.9rem;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.55rem;}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.1);border-radius:10px;padding:.95rem 1rem;}
+.card-icon{font-size:1.2rem;color:rgba(201,169,110,.7);margin-bottom:.45rem;}
+.card-t{font-size:.82rem;font-weight:500;color:#e8dfc8;margin-bottom:.2rem;}
+.card-d{font-size:.73rem;color:rgba(232,223,200,.45);line-height:1.5;}
+
+/* QR section */
+.qr-row{display:flex;gap:1.2rem;align-items:flex-start;}
+.qr-box{background:#fff;border-radius:10px;padding:.7rem;flex-shrink:0;}
+.qr-right{flex:1;}
+.qr-title{font-family:'Playfair Display',serif;font-size:1rem;color:#f0e6c8;margin-bottom:.5rem;}
+.qr-steps{display:flex;flex-direction:column;gap:.5rem;}
+.qr-step{display:flex;align-items:flex-start;gap:.7rem;}
+.qr-num{width:22px;height:22px;border-radius:50%;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.3);color:#c9a96e;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
+.qr-text{font-size:.78rem;color:rgba(232,223,200,.65);line-height:1.45;}
+.qr-where{margin-top:.8rem;padding:.7rem .9rem;background:rgba(201,169,110,.06);border-radius:8px;border:1px solid rgba(201,169,110,.12);}
+.qr-where-t{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:.35rem;}
+.qr-where-items{display:flex;flex-wrap:wrap;gap:.3rem;}
+.qr-tag{font-size:.68rem;color:rgba(232,223,200,.6);background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.15);padding:.18rem .6rem;border-radius:20px;}
+
+/* Signage section */
+.signage-hero{background:linear-gradient(135deg,rgba(212,80,10,.08),rgba(201,169,110,.06));border:1px solid rgba(212,80,10,.2);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:.8rem;}
+.signage-badge{display:inline-flex;align-items:center;gap:.35rem;background:rgba(212,80,10,.12);border:1px solid rgba(212,80,10,.3);color:#e87a3a;font-size:.58rem;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.22rem .7rem;border-radius:20px;margin-bottom:.6rem;}
+.signage-title{font-family:'Playfair Display',serif;font-size:1rem;color:#f0e6c8;margin-bottom:.35rem;}
+.signage-sub{font-size:.78rem;color:rgba(232,223,200,.5);line-height:1.55;}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.8rem;}
+.video-card{border-radius:8px;overflow:hidden;background:#1a1208;border:1px solid rgba(201,169,110,.1);}
+.video-thumb{height:68px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;}
+.video-thumb.fire{background:linear-gradient(160deg,#2a1008,#1a0a04);}
+.video-thumb.grill{background:linear-gradient(160deg,#0a1a08,#081208);}
+.video-thumb.prep{background:linear-gradient(160deg,#12100a,#0a0806);}
+.play-btn{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#fff;}
+.video-label{padding:.4rem .55rem;font-size:.65rem;color:rgba(232,223,200,.55);line-height:1.3;}
+.signage-features{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.7rem;}
+.sf{display:flex;gap:.55rem;align-items:flex-start;padding:.6rem .7rem;background:rgba(255,255,255,.025);border:1px solid rgba(201,169,110,.08);border-radius:8px;}
+.sf-icon{color:rgba(212,80,10,.7);font-size:1rem;flex-shrink:0;margin-top:.1rem;}
+.sf-t{font-size:.75rem;font-weight:500;color:#e8dfc8;margin-bottom:.1rem;}
+.sf-d{font-size:.67rem;color:rgba(232,223,200,.45);line-height:1.4;}
+
+/* compare */
+.cmp{display:flex;border-radius:10px;overflow:hidden;border:1px solid rgba(201,169,110,.12);margin-bottom:.55rem;}
+.cmp-col{flex:1;padding:.85rem 1rem;}
+.cmp-bad{background:rgba(255,80,80,.04);border-right:1px solid rgba(201,169,110,.08);}
+.cmp-good{background:rgba(63,185,80,.04);}
+.cmp-h{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:.45rem;}
+.cmp-bad .cmp-h{color:rgba(255,100,100,.6);}
+.cmp-good .cmp-h{color:rgba(63,185,80,.6);}
+.cmp-i{font-size:.75rem;color:rgba(232,223,200,.6);padding:.15rem 0;line-height:1.4;}
+
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.9rem;}
+.met{text-align:center;padding:.85rem .5rem;background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.12);border-radius:10px;}
+.met-n{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#c9a96e;}
+.met-l{font-size:.62rem;color:rgba(232,223,200,.45);margin-top:.18rem;line-height:1.3;}
+
+.proof-row{display:flex;align-items:flex-start;gap:.7rem;padding:.65rem 0;border-bottom:1px solid rgba(201,169,110,.06);}
+.proof-row:last-child{border:none;}
+.pchk{width:20px;height:20px;border-radius:50%;background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;color:rgba(63,185,80,.9);}
+.ptxt{font-size:.8rem;color:rgba(232,223,200,.65);line-height:1.45;}
+.ptxt strong{color:#e8dfc8;font-weight:500;}
+
+.cta-box{background:linear-gradient(135deg,rgba(201,169,110,.1),rgba(201,169,110,.05));border:1px solid rgba(201,169,110,.28);border-radius:12px;padding:1.3rem 1.5rem;text-align:center;}
+.cta-t{font-family:'Playfair Display',serif;font-size:1rem;color:#f0e6c8;margin-bottom:.45rem;}
+.cta-s{font-size:.78rem;color:rgba(232,223,200,.55);margin-bottom:.9rem;line-height:1.5;}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#b8860b,#d4a017);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.4rem;border-radius:50px;text-decoration:none;margin:.2rem;}
+
+.foot{background:rgba(0,0,0,.25);padding:.9rem 2rem;text-align:center;border-top:1px solid rgba(201,169,110,.08);}
+.foot-t{font-size:.68rem;color:rgba(232,223,200,.3);letter-spacing:.05em;}
+.foot-b{color:rgba(201,169,110,.55);font-weight:500;}
+</style>
+
+<div class="w">
+  <div class="hero">
+    <div class="logo-row">
+      <div class="logo-b">🍽</div>
+      <div class="logo-t">Bistrobit · Ementa Digital</div>
+    </div>
+    <div class="eyebrow">Proposta · Petisqueira da Lage</div>
+    <div class="h1">O vosso menu,<br><span>a trabalhar por vocês</span></div>
+    <div class="hsub">Esqueçam o PDF. Uma ementa digital que actualiza em 30 segundos, funciona em qualquer telemóvel e diz-vos exactamente o que os clientes procuram.</div>
+  </div>
+
+  <div class="sec">
+    <div class="lbl">O problema actual</div>
+    <div class="cmp">
+      <div class="cmp-col cmp-bad">
+        <div class="cmp-h">Hoje (PDF Canva)</div>
+        <div class="cmp-i">Mudar preço: Canva → exportar → upload</div>
+        <div class="cmp-i">Leitão esgotado: não há como avisar</div>
+        <div class="cmp-i">Clientes estrangeiros: sem tradução</div>
+        <div class="cmp-i">Analítica: zero</div>
+      </div>
+      <div class="cmp-col cmp-good">
+        <div class="cmp-h">Com Bistrobit</div>
+        <div class="cmp-i">Mudar preço: editar uma célula no Excel</div>
+        <div class="cmp-i">Leitão esgotado: marcar SIM numa coluna</div>
+        <div class="cmp-i">PT / EN / FR automático</div>
+        <div class="cmp-i">Google Analytics integrado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR CODE SECTION -->
+  <div class="sec">
+    <div class="lbl">Acesso instantâneo — sem app, sem fricção</div>
+    <div class="qr-row">
+      <div class="qr-box">
+        <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+          <rect width="90" height="90" fill="white"/>
+          <rect x="8" y="8" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
+          <rect x="13" y="13" width="20" height="20" fill="#1a1208"/>
+          <rect x="52" y="8" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
+          <rect x="57" y="13" width="20" height="20" fill="#1a1208"/>
+          <rect x="8" y="52" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
+          <rect x="13" y="57" width="20" height="20" fill="#1a1208"/>
+          <rect x="52" y="52" width="8" height="8" fill="#1a1208"/>
+          <rect x="62" y="52" width="8" height="8" fill="#1a1208"/>
+          <rect x="72" y="52" width="10" height="8" fill="#1a1208"/>
+          <rect x="52" y="62" width="8" height="8" fill="#1a1208"/>
+          <rect x="64" y="62" width="18" height="8" fill="#1a1208"/>
+          <rect x="52" y="72" width="18" height="10" fill="#1a1208"/>
+          <rect x="74" y="72" width="8" height="10" fill="#1a1208"/>
+        </svg>
+      </div>
+      <div class="qr-right">
+        <div class="qr-title">O cliente aponta o telemóvel e o menu abre</div>
+        <div class="qr-steps">
+          <div class="qr-step"><div class="qr-num">1</div><div class="qr-text">QR code impresso no talher, na mesa ou na montra</div></div>
+          <div class="qr-step"><div class="qr-num">2</div><div class="qr-text">Cliente aponta a câmara — sem instalar nada</div></div>
+          <div class="qr-step"><div class="qr-num">3</div><div class="qr-text">Menu abre instantaneamente em PT, EN ou FR</div></div>
+        </div>
+        <div class="qr-where">
+          <div class="qr-where-t">Onde colocar o QR</div>
+          <div class="qr-where-items">
+            <span class="qr-tag">Toalhetes de papel</span>
+            <span class="qr-tag">Porta-palitos</span>
+            <span class="qr-tag">Montra</span>
+            <span class="qr-tag">Redes sociais</span>
+            <span class="qr-tag">Take-away</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIGITAL SIGNAGE SECTION -->
+  <div class="sec">
+    <div class="lbl">Digital Signage — o próximo passo</div>
+    <div class="signage-hero">
+      <div class="signage-badge">
+        <i class="ti ti-device-tv" style="font-size:13px" aria-hidden="true"></i>
+        Módulo adicional
+      </div>
+      <div class="signage-title">Ecrãs no restaurante que vendem por vós</div>
+      <div class="signage-sub">Um televisor ou monitor na sala passa automaticamente vídeos curtos de preparação dos pratos, promoções do dia e destaques da ementa — sem esforço do staff.</div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-thumb fire">
+            <div class="play-btn"><i class="ti ti-player-play" style="font-size:10px" aria-hidden="true"></i></div>
+          </div>
+          <div class="video-label">Leitão a sair do forno</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb grill">
+            <div class="play-btn"><i class="ti ti-player-play" style="font-size:10px" aria-hidden="true"></i></div>
+          </div>
+          <div class="video-label">Churrasco a ser preparado</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb prep">
+            <div class="play-btn"><i class="ti ti-player-play" style="font-size:10px" aria-hidden="true"></i></div>
+          </div>
+          <div class="video-label">Prato do dia em close-up</div>
+        </div>
+      </div>
+    </div>
+    <div class="signage-features">
+      <div class="sf">
+        <i class="ti ti-device-tv sf-icon" aria-hidden="true"></i>
+        <div><div class="sf-t">Qualquer ecrã</div><div class="sf-d">TV, monitor ou tablet. Sem hardware especial.</div></div>
+      </div>
+      <div class="sf">
+        <i class="ti ti-refresh sf-icon" aria-hidden="true"></i>
+        <div><div class="sf-t">Actualização automática</div><div class="sf-d">Conteúdo muda com a ementa, sem intervenção.</div></div>
+      </div>
+      <div class="sf">
+        <i class="ti ti-clock sf-icon" aria-hidden="true"></i>
+        <div><div class="sf-t">Horário programado</div><div class="sf-d">Almoço vs jantar — conteúdo diferente automaticamente.</div></div>
+      </div>
+      <div class="sf">
+        <i class="ti ti-chart-bar sf-icon" aria-hidden="true"></i>
+        <div><div class="sf-t">Aumenta o ticket médio</div><div class="sf-d">Ver o leitão a sair do forno convence melhor que qualquer descrição.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="lbl">O que fica disponível na ementa digital</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-icon"><i class="ti ti-search" aria-hidden="true"></i></div>
+        <div class="card-t">Pesquisa em tempo real</div>
+        <div class="card-d">Por prato, ingrediente ou alergénio.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="ti ti-ban" aria-hidden="true"></i></div>
+        <div class="card-t">Esgotado hoje</div>
+        <div class="card-d">Staff marca no Excel, aparece de imediato.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="ti ti-dice" aria-hidden="true"></i></div>
+        <div class="card-t">Surpreende-me</div>
+        <div class="card-d">Sugestão de refeição completa. Premium.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="ti ti-world" aria-hidden="true"></i></div>
+        <div class="card-t">PT / EN / FR</div>
+        <div class="card-d">O cliente escolhe a língua com um clique.</div>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="met"><div class="met-n">30s</div><div class="met-l">para actualizar qualquer preço</div></div>
+      <div class="met"><div class="met-n">0€</div><div class="met-l">custo de hosting por mês</div></div>
+      <div class="met"><div class="met-n">200+</div><div class="met-l">lugares, um único menu digital</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="lbl">Porquê agora</div>
+    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Já provado</strong> — a Tasquinha do Cerqueira em Apúlia usa este sistema todos os dias.</div></div>
+    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Gerido pelo staff</strong> — quem usa Excel já sabe gerir a ementa. Zero formação técnica.</div></div>
+    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Alergénios em conformidade</strong> — Reg. UE 1169/2011 integrado de raiz.</div></div>
+    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Sem dependências</strong> — código vosso, domínio vosso. Não depende de plataformas externas.</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="cta-box">
+      <div class="cta-t">Ver o demo em funcionamento</div>
+      <div class="cta-s">Preparámos uma versão adaptada à Petisqueira da Lage.<br>Sem compromissos.</div>
+      <a class="cta-btn" href="https://grupocerqueira.bistrobit.fyi/Apulia/Prod/menu.html" target="_blank">Ver demo ao vivo</a>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-t">Desenvolvido por <span class="foot-b">Bistrobit</span> · bistrobit.fyi · Braga, Portugal</div>
+  </div>
+</div>
