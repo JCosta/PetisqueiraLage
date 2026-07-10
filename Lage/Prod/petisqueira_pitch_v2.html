@@ -137,11 +137,14 @@
 .foot-t{font-size:.66rem;color:var(--muted);letter-spacing:.05em;}
 .foot-b{color:var(--brown);font-weight:600;}
 
+.signage-isolated{background:var(--bg3);border-top:2px solid var(--amber);border-bottom:2px solid var(--amber);padding:1.4rem 1.5rem;margin:0;}
+
 /* MOBILE */
 @media(max-width:480px){
-  .hero{padding:1.6rem 1.1rem 1.4rem;}
-  .sec{padding:1.2rem 1.1rem;}
-  .h1{font-size:1.5rem;}
+  .hero{padding:1.2rem 1rem 1.2rem;}
+  .sec{padding:1.1rem 1rem;}
+  .signage-isolated{padding:1.1rem 1rem;}
+  .h1{font-size:1.4rem;}
   .ga-metrics{grid-template-columns:repeat(2,1fr);gap:.4rem;}
   .ba-wrap{grid-template-columns:1fr;gap:.4rem;}
   .ba-arrow{display:none;}
@@ -153,6 +156,11 @@
   .metrics{grid-template-columns:repeat(3,1fr);}
   .cta-btns{flex-direction:column;align-items:center;}
   .cta-btn,.cta-btn-ghost{width:100%;justify-content:center;}
+  .cta-box{padding:1.2rem 1rem;}
+  .foot{padding:.7rem 1rem;}
+  .ga-strip{padding:.9rem 1rem;}
+  .signage-box{padding:.9rem 1rem;}
+  .price-card{padding:.9rem 1rem;}
 }
 </style>
 
@@ -178,8 +186,7 @@
       <div class="ga-met"><div class="ga-n">893</div><div class="ga-l">utilizadores activos</div></div>
       <div class="ga-met"><div class="ga-n">872</div><div class="ga-l">novos visitantes</div></div>
       <div class="ga-met"><div class="ga-n">1m53s</div><div class="ga-l">tempo médio no menu</div></div>
-      <div class="ga-met"><div class="ga-n">8000</div><div class="ga-l">interacções totais (últimos 60 dias)</div></div>
-    </div>
+      <div class="ga-met"><div class="ga-n">8000</div><div class="ga-l">interacções totais (60 dias)</div></div>
     <div class="ga-note"><strong>0% taxa de rejeição</strong> — os clientes ficam no menu, exploram e voltam. Não é uma página estática, é uma ferramenta de vendas.</div>
   </div>
   <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Conceito aprovado</strong> — em produção diária desde 2025, com dados reais de centenas de clientes por semana.</div></div>
@@ -195,19 +202,19 @@
     <div class="ba-col ba-bad">
       <div class="ba-h">❌ Hoje (PDF Canva)</div>
       <div class="ba-item">Mudar preço: Canva → exportar → upload</div>
-      <div class="ba-item">Prato esgotado: não há como avisar</div>
+      <div class="ba-item">Leitão esgotado: não há como avisar</div>
       <div class="ba-item">Clientes estrangeiros: sem tradução</div>
-      <div class="ba-item">Analítica: zero. Não sabem o que os clientes mais procuram</div>
+      <div class="ba-item">Analítica: zero. Não sabem os clientes mais procuram</div>
     </div>
     <div class="ba-arrow">→</div>
     <div class="ba-col ba-good">
       <div class="ba-h">✅ Com Bistrobit</div>
       <div class="ba-item">Mudar preço: editar uma célula no Excel</div>
       <div class="ba-item">Prato esgotado: marcar SIM numa coluna</div>
-      <div class="ba-item">Destaque de Produto: marcar SIM numa coluna</div>
+	  <div class="ba-item">Destaque de Produto: marcar SIM numa coluna</div>																	
       <div class="ba-item">PT / EN / FR automático com um clique</div>
       <div class="ba-item">Google Analytics integrado desde o dia 1</div>
-      <div class="ba-item">Reviews no Google, apenas com um clique.</div>
+	  <div class="ba-item">Reviews no Google, apenas com um clique.</div>																 
     </div>
   </div>
   <div class="ba-note">Para um restaurante com <strong>200+ lugares e take-away</strong>, o "Esgotado hoje" evita em média 15–20 pedidos frustrados por serviço — e o menu trilingue capta clientes que o PDF perde.</div>
@@ -248,7 +255,7 @@
 </div>
 
 <!-- DIGITAL SIGNAGE — módulo isolado -->
-<div style="background:var(--bg3);border-top:2px solid var(--amber);border-bottom:2px solid var(--amber);padding:1.4rem 1.5rem;margin:0;">
+<div class="signage-isolated">
   <div class="lbl" style="color:var(--amber);">Módulo opcional · Digital Signage</div>
   <div class="signage-box">
     <div class="sig-badge"><i class="ti ti-device-tv" style="font-size:11px"></i> Módulo adicional</div>
@@ -297,13 +304,13 @@
   <div class="feat-grid">
     <div class="feat"><div class="feat-icon"><i class="ti ti-search"></i></div><div class="feat-t">Pesquisa em tempo real</div><div class="feat-d">Por prato, ingrediente ou alergénio. Essencial para famílias e clientes com restrições.</div></div>
     <div class="feat"><div class="feat-icon"><i class="ti ti-dice"></i></div><div class="feat-t">Surpreende-me</div><div class="feat-d">Sugere refeição completa com pré-selecção Carne / Peixe. Toque premium diferenciador.</div></div>
-    <div class="feat"><div class="feat-icon"><i class="ti ti-world"></i></div><div class="feat-t">PT, EN ou FR</div><div class="feat-d">O cliente escolhe a língua. O menu adapta-se por completo, incluindo alergénios.</div></div>
+    <div class="feat"><div class="feat-icon"><i class="ti ti-world"></i></div><div class="feat-t">PT / EN / FR</div><div class="feat-d">O cliente escolhe a língua. O menu adapta-se por completo, incluindo alergénios.</div></div>
     <div class="feat"><div class="feat-icon"><i class="ti ti-filter"></i></div><div class="feat-t">Filtros por tipo</div><div class="feat-d">Vinhos por Branco / Tinto / Rosé, cervejas, digestivos — navegação intuitiva.</div></div>
   </div>
 
   <div class="metrics">
     <div class="met"><div class="met-n">30 s</div><div class="met-l">para actualizar qualquer preço ou prato</div></div>
-    <div class="met"><div class="met-n">0€</div><div class="met-l">custo de alojamento por mês</div></div>
+    <div class="met"><div class="met-n">0 €</div><div class="met-l">custo de alojamento por mês</div></div>
     <div class="met"><div class="met-n">15000</div><div class="met-l">interacções totais em 30 dias</div></div>
   </div>
 </div>
@@ -331,7 +338,9 @@
       <div class="price-item"><span class="price-dot"></span>Actualizações de funcionalidades</div>
       <div class="price-item"><span class="price-dot"></span>Suporte técnico</div>
       <div class="price-item"><span class="price-dot"></span>Apoio na decisão e re-estruturação de processos</div>
+							   
       <div class="price-item"><span class="price-dot"></span>Renovação de domínio incluída</div>
+
     </div>
   </div>
   <div class="price-note"><strong>Sem letras pequenas.</strong> Sem contratos de fidelização.</div>
