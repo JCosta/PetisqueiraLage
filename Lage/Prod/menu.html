@@ -1447,11 +1447,11 @@ function buildItem(row, secId){
   const esgotadoBadge = isEsgotado ? `<div class="esgotado-badge"><span class="t-pt">⛔ Esgotado hoje</span><span class="t-en">⛔ Sold out today</span><span class="t-fr">⛔ Épuisé aujourd'hui</span></div>` : '';
 
   if(isEncomenda){
-    const isSun=row.desc_pt&&(row.desc_pt.includes('Domingo')||row.desc_pt.includes('Sunday')||row.desc_pt.includes('Dimanche'));
+    var sundayDiv = domingoBadge ? '<div style="margin-top:.28rem;"><span class="item-sunday"><span class="t-pt">🟡 Apenas Domingos</span><span class="t-en">🟡 Sundays Only</span><span class="t-fr">🟡 Dimanches Seulement</span></span></div>' : '';
     return`<div class="item-preorder">
       <div class="item-badge"><span class="t-pt">Por Encomenda</span><span class="t-en">Pre-Order Required</span><span class="t-fr">Sur Commande</span></div>
-      <div class="item-preorder-top"><div class="item-preorder-left">${name}${desc}${al}
-        '+( isSun ? '<div style="margin-top:.28rem;"><span class="item-sunday"><span class="t-pt">🟡 Apenas Domingos</span><span class="t-en">🟡 Sundays Only</span><span class="t-fr">🟡 Dimanches Seulement</span></span></div>' : '')+ '
+      <div class="item-preorder-top"><div class="item-preorder-left">${name}${desc}${al}${sundayDiv}
+																																																												 
       </div>${priceBlock(row)}</div>
     </div>`;
   }
@@ -2066,48 +2066,52 @@ function setDon(btn,type){
   }
 })();
 
-const FALLBACK_CSV = `secção,subsecção,nome_pt,nome_en,nome_fr,descricao_pt,descricao_en,descricao_fr,preco_dose,preco_meia,preco_terceiro,etiqueta_dose,etiqueta_meia,etiqueta_terceiro,alergenios,tipo,estado,destaque
+const FALLBACK_CSV = `secção,subsecção,nome_pt,nome_en,nome_fr,descricao_pt,descricao_en,descricao_fr,preco_dose,preco_meia,preco_terceiro,etiqueta_dose,etiqueta_meia,etiqueta_terceiro,alergenios,tipo,estado,destaque,esgotado
 🥗  ENTRADAS,,,,,,,,,,,,,,,,,,
-entradas,Entradas | Starters | Entrées,Pão com Manteiga,Bread with Butter,Pain et Beurre,Pão artesanal com manteiga da casa,Homemade bread with house butter,Pain artisanal avec beurre maison,1.5,,,Dose,,,,,ativo,
-entradas,Entradas | Starters | Entrées,Azeitonas,Olives,Olives,Azeitonas temperadas da casa,House seasoned olives,Olives assaisonnées maison,2.0,,,Dose,,,,,ativo,
-entradas,Entradas | Starters | Entrées,Alheira Frita,Fried Alheira,Alheira Frite,Alheira transmontana frita com pão,Fried transmontana alheira with bread,Alheira transmontana frite avec pain,6.5,,,Dose,,,🌾,ativo,
-entradas,Entradas | Starters | Entrées,Moela com Pão,Gizzards with Bread,Gésiers avec Pain,Moela temperada servida com pão,Seasoned gizzards served with bread,Gésiers assaisonnés avec pain,6.5,,,Dose,,,🌾,ativo,
-entradas,Entradas | Starters | Entrées,Chouriço Assado (3 un.),Roasted Chouriço (3 pcs),Chouriço Grillé (3 pc.),Chouriço assado na brasa com pão,Charcoal-roasted chouriço with bread,Chouriço grillé au charbon avec pain,7.0,,,Dose,,,🌾,novidade,SIM
-entradas,Entradas | Starters | Entrées,Queijo da Serra com Mel,Serra Cheese with Honey,Fromage Serra au Miel,Queijo da Serra curado com mel de rosmaninho e nozes,Cured Serra cheese with lavender honey and walnuts,Fromage Serra affiné avec miel de lavande et noix,8.5,,,Dose,,,🥛🌰,ativo,
+entradas,Entradas | Starters | Entrées,Pão com Manteiga,Bread with Butter,Pain et Beurre,Pão artesanal com manteiga da casa,Homemade bread with house butter,Pain artisanal avec beurre maison,1.5,,,Dose,,,,,ativo,,
+entradas,Entradas | Starters | Entrées,Azeitonas,Olives,Olives,Azeitonas temperadas da casa,House seasoned olives,Olives assaisonnées maison,2.0,,,Dose,,,,,ativo,,
+entradas,Entradas | Starters | Entrées,Alheira Frita,Fried Alheira,Alheira Frite,Alheira transmontana frita com pão,Fried transmontana alheira with bread,Alheira transmontana frite avec pain,6.5,,,Dose,,,🌾,ativo,,
+entradas,Entradas | Starters | Entrées,Moela com Pão,Gizzards with Bread,Gésiers avec Pain,Moela temperada servida com pão,Seasoned gizzards served with bread,Gésiers assaisonnés avec pain,6.5,,,Dose,,,🌾,ativo,,
+entradas,Entradas | Starters | Entrées,Chouriço Assado (3 un.),Roasted Chouriço (3 pcs),Chouriço Grillé (3 pc.),Chouriço assado na brasa com pão,Charcoal-roasted chouriço with bread,Chouriço grillé au charbon avec pain,7.0,,,Dose,,,🌾,novidade,SIM,
+entradas,Entradas | Starters | Entrées,Queijo da Serra com Mel,Serra Cheese with Honey,Fromage Serra au Miel,Queijo da Serra curado com mel de rosmaninho e nozes,Cured Serra cheese with lavender honey and walnuts,Fromage Serra affiné avec miel et noix,8.5,,,Dose,,,🥛🌰,ativo,,
+entradas,Entradas | Starters | Entrées,Pataniscas de Bacalhau,Codfish Fritters,Beignets de Morue,Pataniscas estaladiças de bacalhau fritas em azeite,Crispy codfish fritters fried in olive oil,Beignets croustillants de morue frits à l'huile d'olive,5.5,,,Dose,,,🐟🌾🥚,ativo,,SIM
 🥩  CARNES,,,,,,,,,,,,,,,,,,
-carnes,Leitão | Suckling Pig | Cochon de Lait,Leitão da Bairrada — Dose,Bairrada Suckling Pig — Portion,Cochon de Lait de Bairrada — Portion,"Leitão assado no forno a lenha, pele estaladiça, carne tenra e suculenta. A especialidade da casa.","Wood-fired roasted suckling pig, crispy skin, tender and succulent meat. The house speciality.","Cochon de lait rôti au four à bois, peau croustillante, viande tendre et succulente. La spécialité de la maison.",16.5,9.0,,Dose,(1/2) Dose,,,ativo,SIM
-carnes,Leitão | Suckling Pig | Cochon de Lait,Leitão da Bairrada — Dose criança,Bairrada Suckling Pig — Child Portion,Cochon de Lait — Portion enfant,Dose mais pequena para os mais novos,Smaller portion for children,Portion plus petite pour les enfants,9.0,,,Dose,,,,,ativo,
-carnes,Carnes | Meats | Viandes,Frango no Churrasco (1/2),Charcoal Chicken (1/2),Poulet au Charbon (1/2),"Frango criado ao ar livre, assado na brasa com tempero da casa","Free-range chicken, charcoal-roasted with house seasoning","Poulet fermier, rôti au charbon avec assaisonnement maison",8.5,,,Dose,,,,,ativo,
-carnes,Carnes | Meats | Viandes,Frango no Churrasco (inteiro),Charcoal Chicken (whole),Poulet au Charbon (entier),"Frango criado ao ar livre, assado na brasa","Free-range chicken, charcoal-roasted","Poulet fermier, rôti au charbon",16.0,,,Dose,,,,,ativo,
-carnes,Carnes | Meats | Viandes,Entremeada Grelhada,Grilled Pork Belly,Poitrine Grillée,Entremeada grelhada na brasa temperada com alho e louro,Grilled pork belly seasoned with garlic and bay leaf,Poitrine grillée au charbon assaisonnée à l'ail et au laurier,9.5,,,Dose,,,,,ativo,
-carnes,Carnes | Meats | Viandes,Costeletas de Porco,Pork Chops,Côtes de Porc,Costeletas grelhadas na brasa com batata frita,Charcoal-grilled pork chops with french fries,Côtes de porc grillées au charbon avec frites,11.0,6.0,,Dose,(1/2) Dose,,,ativo,
-carnes,Carnes | Meats | Viandes,Bife da Vazia,Sirloin Steak,Faux-Filet,Bife de vazia grelhado com batata e salada,Grilled sirloin steak with potatoes and salad,Faux-filet grillé avec pommes de terre et salade,14.0,,,Dose,,,🌾,ativo,
-carnes,Por Encomenda | On Order | Sur Commande,Leitão Inteiro (encomenda),Whole Suckling Pig (order),Cochon de Lait Entier (commande),"Leitão inteiro assado, para grupos. Encomenda mínima 48h","Whole roasted suckling pig, for groups. Minimum 48h advance order","Cochon de lait entier rôti, pour groupes. Commande minimum 48h",120.0,,,Unidade,,,,,por encomenda,
+carnes,Leitão | Suckling Pig | Cochon de Lait,Leitão da Bairrada — Dose,Bairrada Suckling Pig — Portion,Cochon de Lait de Bairrada — Portion,"Leitão assado no forno a lenha, pele estaladiça, carne tenra e suculenta. A especialidade da casa.","Wood-fired roasted suckling pig, crispy skin, tender and succulent meat. The house speciality.","Cochon de lait rôti au four à bois, peau croustillante, viande tendre. La spécialité de la maison.",16.5,9.0,,Dose,(1/2) Dose,,,ativo,SIM,
+carnes,Leitão | Suckling Pig | Cochon de Lait,Leitão da Bairrada — Dose criança,Bairrada Suckling Pig — Child Portion,Cochon de Lait — Portion enfant,Dose mais pequena para os mais novos,Smaller portion for children,Portion plus petite pour les enfants,9.0,,,Dose,,,,,ativo,,
+carnes,Carnes | Meats | Viandes,Frango no Churrasco (1/2),Charcoal Chicken (1/2),Poulet au Charbon (1/2),"Frango criado ao ar livre, assado na brasa com tempero da casa","Free-range chicken, charcoal-roasted with house seasoning","Poulet fermier, rôti au charbon avec assaisonnement maison",8.5,,,Dose,,,,,ativo,,
+carnes,Carnes | Meats | Viandes,Frango no Churrasco (inteiro),Charcoal Chicken (whole),Poulet au Charbon (entier),"Frango criado ao ar livre, assado na brasa","Free-range chicken, charcoal-roasted","Poulet fermier, rôti au charbon",16.0,,,Dose,,,,,ativo,,
+carnes,Carnes | Meats | Viandes,Entremeada Grelhada,Grilled Pork Belly,Poitrine Grillée,Entremeada grelhada na brasa com alho e louro,Grilled pork belly with garlic and bay leaf,Poitrine grillée avec ail et laurier,9.5,,,Dose,,,,,novidade,,
+carnes,Carnes | Meats | Viandes,Costeletas de Porco,Pork Chops,Côtes de Porc,Costeletas grelhadas na brasa com batata frita,Charcoal-grilled pork chops with french fries,Côtes de porc grillées avec frites,11.0,6.0,,Dose,(1/2) Dose,,,ativo,,
+carnes,Carnes Maturadas | Dry-Aged Meats | Viandes Maturées,Tomahawk Black Angus — Dry Aged,Tomahawk Black Angus — Dry Aged,Tomahawk Black Angus — Dry Aged,"Corte premium maturado a seco, osso longo, marmoreio intenso. Assado na brasa da casa.","Premium dry-aged cut, long bone, intense marbling. Charcoal-grilled to perfection.","Coupe premium maturée à sec, os long, persillage intense. Grillée au charbon.",50.0,,,Dose,,,,,ativo,SIM,
+carnes,Carnes | Meats | Viandes,Vitela Assada no Forno,Oven-Roasted Veal,Veau Rôti au Four,Vitela assada lentamente no forno com legumes da época,Slow oven-roasted veal with seasonal vegetables,Veau rôti lentement au four avec légumes de saison,13.0,7.0,,Dose,(1/2) Dose,,,so domingo,,
+carnes,Por Encomenda | On Order | Sur Commande,Leitão Inteiro (encomenda),Whole Suckling Pig (order),Cochon de Lait Entier (commande),"Leitão inteiro assado, para grupos. Encomenda mínima 48h","Whole roasted suckling pig, for groups. Minimum 48h advance order","Cochon de lait entier rôti, pour groupes. Commande minimum 48h",120.0,,,Unidade,,,,,por encomenda,,
 🐟  PEIXES,,,,,,,,,,,,,,,,,,
-peixes,Peixes | Fish | Poissons,Bacalhau Assado,Roasted Codfish,Morue Rôtie,Bacalhau assado no forno com azeite alho e batata a murro,Oven-roasted codfish with olive oil garlic and crushed potatoes,Morue rôtie au four avec huile d'olive ail et pommes de terre écrasées,13.5,7.0,,Dose,(1/2) Dose,,🐟,ativo,
-peixes,Peixes | Fish | Poissons,Bacalhau com Broa,Codfish with Corn Bread,Morue à la Broa,Bacalhau gratinado com broa e legumes salteados,Codfish gratin with corn bread and sautéed vegetables,Morue gratin avec pain de maïs et légumes sautés,14.0,7.5,,Dose,(1/2) Dose,,🐟🌾,ativo,
-peixes,Peixes | Fish | Poissons,Truta Grelhada,Grilled Trout,Truite Grillée,Truta fresca grelhada com batata cozida e salada,Fresh grilled trout with boiled potatoes and salad,Truite fraîche grillée avec pommes de terre et salade,11.0,,,Dose,,,🐟,ativo,
-peixes,Peixes | Fish | Poissons,Sardinhas Assadas (6 un.),Roasted Sardines (6 pcs),Sardines Grillées (6 pc.),Sardinhas frescas assadas na brasa com pão,Fresh sardines grilled over charcoal with bread,Sardines fraîches grillées au charbon avec pain,9.0,,,Dose,,,🐟,ativo,
+peixes,Peixes | Fish | Poissons,Bacalhau Assado,Roasted Codfish,Morue Rôtie,Bacalhau assado no forno com azeite alho e batata a murro,Oven-roasted codfish with olive oil garlic and crushed potatoes,Morue rôtie au four avec huile d'olive ail et pommes de terre,13.5,7.0,,Dose,(1/2) Dose,,🐟,novidade,SIM,
+peixes,Peixes | Fish | Poissons,Bacalhau com Broa,Codfish with Corn Bread,Morue à la Broa,Bacalhau gratinado com broa e legumes salteados,Codfish gratin with corn bread and sautéed vegetables,Morue gratin avec pain de maïs et légumes sautés,14.0,7.5,,Dose,(1/2) Dose,,🐟🌾,ativo,,
+peixes,Peixes | Fish | Poissons,Truta Grelhada,Grilled Trout,Truite Grillée,Truta fresca grelhada com batata cozida e salada,Fresh grilled trout with boiled potatoes and salad,Truite fraîche grillée avec pommes de terre et salade,11.0,,,Dose,,,🐟,ativo,,
+peixes,Peixes | Fish | Poissons,Sardinhas Assadas (6 un.),Roasted Sardines (6 pcs),Sardines Grillées (6 pc.),Sardinhas frescas assadas na brasa com pão,Fresh sardines grilled over charcoal with bread,Sardines fraîches grillées au charbon avec pain,9.0,,,Dose,,,🐟,ativo,,
+peixes,Peixes | Fish | Poissons,Polvo à Lagareiro,Octopus à Lagareiro,Poulpe à Lagareiro,Polvo assado no forno com azeite e batatas a murro,Oven-roasted octopus with olive oil and crushed potatoes,Poulpe rôti au four avec huile d'olive et pommes de terre,14.5,8.0,,Dose,(1/2) Dose,,🐟,ativo,,SIM
 🍰  SOBREMESAS,,,,,,,,,,,,,,,,,,
-sobremesas,Sobremesas | Desserts | Desserts,Arroz Doce,Rice Pudding,Riz au Lait,Arroz doce cremoso com canela — receita tradicional,Creamy rice pudding with cinnamon — traditional recipe,Riz au lait crémeux à la cannelle — recette traditionnelle,3.5,,,Dose,,,🥛🥚,ativo,
-sobremesas,Sobremesas | Desserts | Desserts,Pudim Flan,Caramel Pudding,Flan Caramel,Pudim caseiro com caramelo,Homemade pudding with caramel,Pudding maison avec caramel,3.5,,,Dose,,,🥛🥚,ativo,
-sobremesas,Sobremesas | Desserts | Desserts,Mousse de Chocolate,Chocolate Mousse,Mousse au Chocolat,Mousse de chocolate negro artesanal,Artisan dark chocolate mousse,Mousse de chocolat noir artisanale,3.8,,,Dose,,,🥛🥚,ativo,
-sobremesas,Sobremesas | Desserts | Desserts,Gelado (3 bolas),Ice Cream (3 scoops),Glace (3 boules),Gelado artesanal — pergunte os sabores do dia,Artisan ice cream — ask for today's flavours,Glace artisanale — demandez les parfums du jour,3.5,,,Dose,,,🥛🥚,Gelado,ativo,
+sobremesas,Sobremesas | Desserts | Desserts,Arroz Doce,Rice Pudding,Riz au Lait,Arroz doce cremoso com canela — receita tradicional,Creamy rice pudding with cinnamon — traditional recipe,Riz au lait crémeux à la cannelle — recette traditionnelle,3.5,,,Dose,,,🥛🥚,ativo,,
+sobremesas,Sobremesas | Desserts | Desserts,Pudim Flan,Caramel Pudding,Flan Caramel,Pudim caseiro com caramelo,Homemade pudding with caramel,Pudding maison avec caramel,3.5,,,Dose,,,🥛🥚,ativo,,
+sobremesas,Sobremesas | Desserts | Desserts,Mousse de Chocolate,Chocolate Mousse,Mousse au Chocolat,Mousse de chocolate negro artesanal,Artisan dark chocolate mousse,Mousse de chocolat noir artisanale,3.8,,,Dose,,,🥛🥚,novidade,,
+sobremesas,Sobremesas | Desserts | Desserts,Gelado (3 bolas),Ice Cream (3 scoops),Glace (3 boules),Gelado artesanal — pergunte os sabores do dia,Artisan ice cream — ask for today's flavours,Glace artisanale — demandez les parfums du jour,3.5,,,Dose,,,🥛🥚,Gelado,ativo,,
+sobremesas,Sobremesas | Desserts | Desserts,Tarte de Amêndoa,Almond Tart,Tarte aux Amandes,Tarte de amêndoa com calda de laranja — receita da casa,Almond tart with orange syrup — house recipe,Tarte aux amandes avec sirop d'orange — recette maison,4.0,,,Dose,,,🌰🥚🌾,ativo,,SIM
 🍺  BEBIDAS & CAFETARIA,,,,,,,,,,,,,,,,,,
-bebidas,Bebidas | Drinks | Boissons,Água (0.5L),Still Water (0.5L),Eau (0.5L),Água sem gás,Still water,Eau plate,1.0,,,Un.,,,,,ativo,
-bebidas,Bebidas | Drinks | Boissons,Água com Gás (0.5L),Sparkling Water (0.5L),Eau Gazeuse (0.5L),Água com gás,Sparkling water,Eau gazeuse,1.2,,,Un.,,,,,ativo,
-bebidas,Bebidas | Drinks | Boissons,Refrigerante (0.33L),Soft Drink (0.33L),Boisson Fraîche (0.33L),Coca-Cola / Fanta / Sprite,Coca-Cola / Fanta / Sprite,Coca-Cola / Fanta / Sprite,2.0,,,Un.,,,,,ativo,
-bebidas,Bebidas | Drinks | Boissons,Sumo Natural,Fresh Juice,Jus Frais,Sumo de laranja natural,Fresh orange juice,Jus d'orange frais,2.5,,,Copo,,,🍊,ativo,
-bebidas,Cafetaria | Coffee | Café,Café,Espresso,Café Espresso,Café expresso,Espresso coffee,Café expresso,0.8,,,Un.,,,,,ativo,
-bebidas,Cafetaria | Coffee | Café,Galão,Galão,Galão,Leite com café,Coffee with milk,Café au lait,1.2,,,Un.,,,🥛,ativo,
+bebidas,Bebidas | Drinks | Boissons,Água (0.5L),Still Water (0.5L),Eau (0.5L),Água sem gás,Still water,Eau plate,1.0,,,Un.,,,,,ativo,,
+																																								   
+bebidas,Bebidas | Drinks | Boissons,Refrigerante (0.33L),Soft Drink (0.33L),Boisson Fraîche (0.33L),Coca-Cola / Fanta / Sprite,Coca-Cola / Fanta / Sprite,Coca-Cola / Fanta / Sprite,2.0,,,Un.,,,,,ativo,,
+bebidas,Bebidas | Drinks | Boissons,Sumo Natural de Laranja,Fresh Orange Juice,Jus d'Orange Frais,Sumo de laranja natural espremido na hora,Freshly squeezed orange juice,Jus d'orange fraîchement pressé,2.5,,,Copo,,,🍊,ativo,,
+bebidas,Cafetaria | Coffee | Café,Café Expresso,Espresso,Café Espresso,Café expresso,Espresso coffee,Café espresso,0.8,,,Un.,,,,,ativo,,
+bebidas,Cafetaria | Coffee | Café,Galão,Galão,Galão,Leite com café,Coffee with milk,Café au lait,1.2,,,Un.,,,🥛,ativo,,
 🍻  CERVEJAS,,,,,,,,,,,,,,,,,,
-cervejas,Cervejas | Beers | Bières,Super Bock (0.20L),Super Bock (0.20L),Super Bock (0.20L),Cerveja portuguesa fresca,Fresh Portuguese beer,Bière portugaise fraîche,1.5,,,Un.,,,,,ativo,
-cervejas,Cervejas | Beers | Bières,Super Bock (0.33L),Super Bock (0.33L),Super Bock (0.33L),Cerveja portuguesa fresca,Fresh Portuguese beer,Bière portugaise fraîche,2.0,,,Un.,,,,,ativo,
-cervejas,Cervejas | Beers | Bières,Super Bock (0.50L),Super Bock (0.50L),Super Bock (0.50L),Cerveja portuguesa fresca,Fresh Portuguese beer,Bière portugaise fraîche,2.8,,,Un.,,,,,ativo,
+cervejas,Cervejas | Beers | Bières,Super Bock (0.20L),Super Bock (0.20L),Super Bock (0.20L),Cerveja portuguesa fresca,Fresh Portuguese beer,Bière portugaise fraîche,1.5,,,Un.,,,,,ativo,,
+cervejas,Cervejas | Beers | Bières,Super Bock (0.33L),Super Bock (0.33L),Super Bock (0.33L),Cerveja portuguesa fresca,Fresh Portuguese beer,Bière portugaise fraîche,2.0,,,Un.,,,,,ativo,,
+cervejas,Cervejas | Beers | Bières,Super Bock Sem Álcool,Super Bock Alcohol-Free,Super Bock Sans Alcool,Cerveja sem álcool,Alcohol-free beer,Bière sans alcool,2.0,,,Un.,,,,,novidade,,
 🍷  VINHOS DA CASA,,,,,,,,,,,,,,,,,,
-vinhoscasa,Vinho da Casa | House Wine | Vin de la Maison,Branco,White,Blanc,Vinho branco da casa suave e fresco,Smooth and fresh house white wine,Vin blanc de la maison doux et frais,8.0,4.5,,75cl,37.5cl,,,ativo,
-vinhoscasa,Vinho da Casa | House Wine | Vin de la Maison,Tinto,Red,Rouge,Vinho tinto da casa encorpado e frutado,Full-bodied and fruity house red wine,Vin rouge de la maison corsé et fruité,8.0,4.5,,75cl,37.5cl,,,ativo,
-vinhoscasa,Vinho da Casa | House Wine | Vin de la Maison,Rosé,Rosé,Rosé,Vinho rosé da casa fresco e aromático,Fresh and aromatic house rosé wine,Vin rosé de la maison frais et aromatique,8.0,4.5,,75cl,37.5cl,,,ativo,
+vinhoscasa,Vinho da Casa | House Wine | Vin de la Maison,Branco,White,Blanc,Vinho branco da casa suave e fresco,Smooth and fresh house white wine,Vin blanc de la maison doux et frais,8.0,4.5,,75cl,37.5cl,,,ativo,,
+vinhoscasa,Vinho da Casa | House Wine | Vin de la Maison,Tinto,Red,Rouge,Vinho tinto da casa encorpado e frutado,Full-bodied and fruity house red wine,Vin rouge de la maison corsé et fruité,8.0,4.5,,75cl,37.5cl,,,ativo,,
+vinhoscasa,Vinho da Casa | House Wine | Vin de la Maison,Rosé,Rosé,Rosé,Vinho rosé da casa fresco e aromático,Fresh and aromatic house rosé wine,Vin rosé de la maison frais et aromatique,8.0,4.5,,75cl,37.5cl,,,ativo,,
 `;
 </script>
 
