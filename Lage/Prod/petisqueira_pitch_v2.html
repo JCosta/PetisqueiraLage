@@ -1,265 +1,354 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://unpkg.com/tabler-icons@latest/iconfont/tabler-icons.min.css');
 *{box-sizing:border-box;margin:0;padding:0;}
-.w{font-family:'Inter',sans-serif;background:#faf6ef;color:#1e1408;}
-.hero{background:#f0ebe0;padding:2.5rem 2rem 2rem;border-bottom:1px solid rgba(201,169,110,.15);}
-.logo-row{display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem;}
-.logo-b{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#8a5c28,#c8924a);display:flex;align-items:center;justify-content:center;font-size:1rem;}
-.logo-t{font-family:'Playfair Display',serif;font-size:.75rem;color:rgba(122,78,32,.8);letter-spacing:.15em;text-transform:uppercase;}
-.eyebrow{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(122,78,32,.6);margin-bottom:.6rem;}
-.h1{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;line-height:1.2;color:#1e1408;margin-bottom:.65rem;}
-.h1 span{color:#7a4e20;}
-.hsub{font-size:.85rem;color:rgba(30,20,8,.55);line-height:1.65;}
-.sec{padding:1.6rem 2rem;}
-.sec+.sec{border-top:1px solid rgba(122,78,32,.12);}
-.lbl{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(122,78,32,.55);font-weight:600;margin-bottom:.9rem;}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.55rem;}
-.card{background:rgba(122,78,32,.05);border:1px solid rgba(122,78,32,.15);border-radius:10px;padding:.95rem 1rem;}
-.card-icon{font-size:1.2rem;color:rgba(122,78,32,.7);margin-bottom:.45rem;}
-.card-t{font-size:.82rem;font-weight:500;color:#1e1408;margin-bottom:.2rem;}
-.card-d{font-size:.73rem;color:rgba(30,20,8,.5);line-height:1.5;}
 
-/* QR section */
-.qr-row{display:flex;gap:1.2rem;align-items:flex-start;}
-.qr-box{background:#fff;border-radius:10px;padding:.7rem;flex-shrink:0;}
+/* PALETTE */
+:root{
+  --bg:#faf6ef;--bg2:#f0ebe0;--bg3:#e8e0d0;
+  --card:#fff;--border:rgba(122,78,32,.15);
+  --brown:#7a4e20;--brown-d:#5a3810;--amber:#c8924a;
+  --text:#1e1408;--muted:rgba(30,20,8,.5);
+  --green:#2d7a3a;--red:#8a2e18;
+}
+
+.w{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);max-width:680px;margin:0 auto;}
+
+/* HERO */
+.hero{background:var(--bg2);padding:2rem 1.5rem 1.8rem;border-bottom:2px solid var(--amber);}
+.logo-row{display:flex;align-items:center;gap:.7rem;margin-bottom:1.5rem;}
+.logo-b{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#8a5c28,#c8924a);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.logo-t{font-family:'Playfair Display',serif;font-size:.7rem;color:var(--brown);letter-spacing:.18em;text-transform:uppercase;}
+.eyebrow{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;font-weight:600;}
+.h1{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,2rem);font-weight:900;line-height:1.15;color:var(--text);margin-bottom:.6rem;}
+.h1 span{color:var(--brown);}
+.hsub{font-size:.88rem;color:var(--muted);line-height:1.7;}
+
+/* SECTIONS */
+.sec{padding:1.4rem 1.5rem;}
+.sec+.sec{border-top:1px solid var(--border);}
+.lbl{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.8rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+
+/* PROOF SOCIAL — DESTAQUE */
+.ga-strip{background:linear-gradient(135deg,var(--brown-d),var(--brown));border-radius:12px;padding:1.2rem 1.3rem;margin-bottom:.8rem;}
+.ga-strip-top{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.8rem;font-weight:600;}
+.ga-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;}
+.ga-met{text-align:center;}
+.ga-n{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;line-height:1;}
+.ga-l{font-size:.58rem;color:rgba(255,255,255,.65);margin-top:.25rem;line-height:1.3;}
+.ga-note{font-size:.7rem;color:rgba(255,255,255,.75);margin-top:.8rem;border-top:1px solid rgba(255,255,255,.15);padding-top:.6rem;line-height:1.5;}
+.ga-note strong{color:#fff;}
+
+/* BEFORE/AFTER VISUAL */
+.ba-wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;align-items:center;margin-bottom:.6rem;}
+.ba-col{border-radius:10px;padding:.9rem 1rem;}
+.ba-bad{background:rgba(180,60,40,.06);border:1px solid rgba(180,60,40,.2);}
+.ba-good{background:rgba(45,122,58,.06);border:1px solid rgba(45,122,58,.2);}
+.ba-h{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem;}
+.ba-bad .ba-h{color:var(--red);}
+.ba-good .ba-h{color:var(--green);}
+.ba-item{font-size:.78rem;color:var(--muted);padding:.2rem 0;line-height:1.4;display:flex;align-items:baseline;gap:.35rem;}
+.ba-arrow{text-align:center;font-size:1.4rem;color:var(--amber);flex-shrink:0;}
+.ba-note{font-size:.72rem;color:var(--muted);background:var(--bg2);border-radius:8px;padding:.6rem .8rem;line-height:1.5;}
+.ba-note strong{color:var(--brown);}
+
+/* QR */
+.qr-row{display:flex;gap:1rem;align-items:flex-start;}
+.qr-box{background:#fff;border-radius:10px;padding:.6rem;border:1px solid var(--border);flex-shrink:0;}
 .qr-right{flex:1;}
-.qr-title{font-family:'Playfair Display',serif;font-size:1rem;color:#1e1408;margin-bottom:.5rem;}
-.qr-steps{display:flex;flex-direction:column;gap:.5rem;}
-.qr-step{display:flex;align-items:flex-start;gap:.7rem;}
-.qr-num{width:22px;height:22px;border-radius:50%;background:rgba(122,78,32,.12);border:1px solid rgba(122,78,32,.3);color:#7a4e20;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
-.qr-text{font-size:.78rem;color:rgba(30,20,8,.6);line-height:1.45;}
-.qr-where{margin-top:.8rem;padding:.7rem .9rem;background:rgba(122,78,32,.06);border-radius:8px;border:1px solid rgba(122,78,32,.15);}
-.qr-where-t{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,78,32,.55);margin-bottom:.35rem;}
-.qr-where-items{display:flex;flex-wrap:wrap;gap:.3rem;}
-.qr-tag{font-size:.68rem;color:rgba(30,20,8,.65);background:rgba(122,78,32,.07);border:1px solid rgba(122,78,32,.18);padding:.18rem .6rem;border-radius:20px;}
+.qr-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.55rem;line-height:1.35;}
+.qr-step{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.4rem;}
+.qr-num{width:20px;height:20px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);color:var(--brown);font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.qr-text{font-size:.78rem;color:var(--muted);line-height:1.4;}
+.qr-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.7rem;}
+.qr-tag{font-size:.68rem;color:var(--brown);background:rgba(122,78,32,.08);border:1px solid rgba(122,78,32,.18);padding:.18rem .6rem;border-radius:20px;}
 
-/* Signage section */
-.signage-hero{background:linear-gradient(135deg,rgba(138,60,24,.06),rgba(200,146,74,.08));border:1px solid rgba(138,60,24,.2);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:.8rem;}
-.signage-badge{display:inline-flex;align-items:center;gap:.35rem;background:rgba(138,60,24,.1);border:1px solid rgba(138,60,24,.3);color:#8a3c18;font-size:.58rem;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.22rem .7rem;border-radius:20px;margin-bottom:.6rem;}
-.signage-title{font-family:'Playfair Display',serif;font-size:1rem;color:#1e1408;margin-bottom:.35rem;}
-.signage-sub{font-size:.78rem;color:rgba(30,20,8,.5);line-height:1.55;}
-.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.8rem;}
-.video-card{border-radius:8px;overflow:hidden;background:#e8e0d0;border:1px solid rgba(122,78,32,.2);}
-.video-thumb{height:68px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;}
+/* SIGNAGE */
+.signage-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;margin-bottom:.6rem;}
+.sig-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(122,78,32,.1);border:1px solid rgba(122,78,32,.25);color:var(--brown);font-size:.56rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;margin-bottom:.55rem;}
+.sig-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--text);margin-bottom:.3rem;}
+.sig-sub{font-size:.78rem;color:var(--muted);line-height:1.55;margin-bottom:.8rem;}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;}
+.video-card{border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.video-thumb{height:60px;display:flex;align-items:center;justify-content:center;position:relative;}
 .video-thumb.fire{background:linear-gradient(160deg,#c87840,#8a4018);}
-.video-thumb.grill{background:linear-gradient(160deg,#3a5828,#283c1a);}
-.video-thumb.prep{background:linear-gradient(160deg,#6a5030,#4a3820);}
-.play-btn{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#fff;}
-.video-label{padding:.4rem .55rem;font-size:.65rem;color:rgba(30,20,8,.55);line-height:1.3;}
-.signage-features{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.7rem;}
-.sf{display:flex;gap:.55rem;align-items:flex-start;padding:.6rem .7rem;background:rgba(122,78,32,.04);border:1px solid rgba(122,78,32,.12);border-radius:8px;}
-.sf-icon{color:rgba(138,60,24,.8);font-size:1rem;flex-shrink:0;margin-top:.1rem;}
-.sf-t{font-size:.75rem;font-weight:500;color:#1e1408;margin-bottom:.1rem;}
-.sf-d{font-size:.67rem;color:rgba(30,20,8,.5);line-height:1.4;}
+.video-thumb.grill{background:linear-gradient(160deg,#4a7838,#2a5020);}
+.video-thumb.prep{background:linear-gradient(160deg,#8a7050,#5a4830);}
+.play-btn{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;}
+.video-label{padding:.35rem .5rem;font-size:.62rem;color:var(--muted);line-height:1.3;background:#fff;}
+.sf-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;}
+.sf{display:flex;gap:.5rem;align-items:flex-start;padding:.55rem .7rem;background:var(--card);border:1px solid var(--border);border-radius:8px;}
+.sf-icon{color:var(--amber);font-size:.95rem;flex-shrink:0;margin-top:.1rem;}
+.sf-t{font-size:.75rem;font-weight:600;color:var(--text);}
+.sf-d{font-size:.66rem;color:var(--muted);line-height:1.4;margin-top:.1rem;}
 
-/* compare */
-.cmp{display:flex;border-radius:10px;overflow:hidden;border:1px solid rgba(122,78,32,.18);margin-bottom:.55rem;}
-.cmp-col{flex:1;padding:.85rem 1rem;}
-.cmp-bad{background:rgba(180,60,40,.06);border-right:1px solid rgba(122,78,32,.1);}
-.cmp-good{background:rgba(63,185,80,.04);}
-.cmp-h{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:.45rem;}
-.cmp-bad .cmp-h{color:rgba(255,100,100,.6);}
-.cmp-good .cmp-h{color:rgba(63,185,80,.6);}
-.cmp-i{font-size:.75rem;color:rgba(30,20,8,.6);padding:.15rem 0;line-height:1.4;}
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.85rem .95rem;}
+.feat-icon{font-size:1.15rem;color:var(--amber);margin-bottom:.4rem;}
+.feat-t{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.18rem;}
+.feat-d{font-size:.72rem;color:var(--muted);line-height:1.45;}
 
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.9rem;}
-.met{text-align:center;padding:.85rem .5rem;background:rgba(122,78,32,.06);border:1px solid rgba(122,78,32,.18);border-radius:10px;}
-.met-n{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#7a4e20;}
-.met-l{font-size:.62rem;color:rgba(30,20,8,.5);margin-top:.18rem;line-height:1.3;}
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin-top:.8rem;}
+.met{text-align:center;padding:.8rem .4rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;}
+.met-n{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--brown);}
+.met-l{font-size:.6rem;color:var(--muted);margin-top:.18rem;line-height:1.3;}
 
-.proof-row{display:flex;align-items:flex-start;gap:.7rem;padding:.65rem 0;border-bottom:1px solid rgba(122,78,32,.1);}
+/* PROVA */
+.proof-row{display:flex;align-items:flex-start;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--border);}
 .proof-row:last-child{border:none;}
-.pchk{width:20px;height:20px;border-radius:50%;background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;color:rgba(63,185,80,.9);}
-.ptxt{font-size:.8rem;color:rgba(30,20,8,.6);line-height:1.45;}
-.ptxt strong{color:#1e1408;font-weight:500;}
+.pchk{width:20px;height:20px;border-radius:50%;background:rgba(45,122,58,.1);border:1px solid rgba(45,122,58,.3);display:flex;align-items:center;justify-content:center;font-size:.62rem;flex-shrink:0;color:var(--green);}
+.ptxt{font-size:.82rem;color:var(--muted);line-height:1.45;}
+.ptxt strong{color:var(--text);}
 
-.cta-box{background:linear-gradient(135deg,rgba(122,78,32,.08),rgba(200,146,74,.06));border:1px solid rgba(122,78,32,.3);border-radius:12px;padding:1.3rem 1.5rem;text-align:center;}
-.cta-t{font-family:'Playfair Display',serif;font-size:1rem;color:#1e1408;margin-bottom:.45rem;}
-.cta-s{font-size:.78rem;color:rgba(30,20,8,.55);margin-bottom:.9rem;line-height:1.5;}
-.cta-btn{display:inline-block;background:linear-gradient(135deg,#7a4e20,#c8924a);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.4rem;border-radius:50px;text-decoration:none;margin:.2rem;}
+/* PREÇÁRIO */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
+.price-card{border-radius:12px;padding:1.1rem 1.2rem;border:1.5px solid var(--border);}
+.price-card.featured{background:var(--brown-d);border-color:var(--brown);color:#fff;}
+.price-badge{font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem;}
+.price-card.featured .price-badge{color:var(--amber);}
+.price-card:not(.featured) .price-badge{color:var(--brown);}
+.price-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;line-height:1;}
+.price-card.featured .price-n{color:#fff;}
+.price-card:not(.featured) .price-n{color:var(--text);}
+.price-per{font-size:.65rem;margin-left:.2rem;opacity:.7;}
+.price-desc{font-size:.75rem;margin-top:.5rem;margin-bottom:.7rem;line-height:1.5;opacity:.75;}
+.price-item{font-size:.73rem;padding:.2rem 0;display:flex;align-items:flex-start;gap:.4rem;line-height:1.35;}
+.price-card.featured .price-item{color:rgba(255,255,255,.8);}
+.price-card:not(.featured) .price-item{color:var(--muted);}
+.price-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:.4rem;}
+.price-note{font-size:.7rem;color:var(--muted);background:var(--bg2);border-radius:8px;padding:.6rem .8rem;margin-top:.6rem;line-height:1.5;border:1px solid var(--border);}
+.price-note strong{color:var(--brown);}
 
-.foot{background:rgba(122,78,32,.08);padding:.9rem 2rem;text-align:center;border-top:1px solid rgba(201,169,110,.08);}
-.foot-t{font-size:.68rem;color:rgba(30,20,8,.4);letter-spacing:.05em;}
-.foot-b{color:rgba(122,78,32,.7);font-weight:500;}
+/* CTA */
+.cta-box{background:linear-gradient(135deg,var(--brown-d),var(--brown));border-radius:14px;padding:1.5rem;text-align:center;}
+.cta-t{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:.4rem;}
+.cta-s{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:1rem;line-height:1.55;}
+.cta-btns{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;}
+.cta-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--amber);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.65rem 1.3rem;border-radius:50px;text-decoration:none;}
+.cta-btn-ghost{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);font-size:.72rem;font-weight:600;padding:.65rem 1.3rem;border-radius:50px;text-decoration:none;}
+
+.feat-group-title{font-size:.7rem;font-weight:700;color:var(--brown);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border);}
+
+/* FOOTER */
+.foot{background:var(--bg3);padding:.8rem 1.5rem;text-align:center;border-top:1px solid var(--border);}
+.foot-t{font-size:.66rem;color:var(--muted);letter-spacing:.05em;}
+.foot-b{color:var(--brown);font-weight:600;}
+
+/* MOBILE */
+@media(max-width:480px){
+  .hero{padding:1.6rem 1.1rem 1.4rem;}
+  .sec{padding:1.2rem 1.1rem;}
+  .h1{font-size:1.5rem;}
+  .ga-metrics{grid-template-columns:repeat(2,1fr);gap:.4rem;}
+  .ba-wrap{grid-template-columns:1fr;gap:.4rem;}
+  .ba-arrow{display:none;}
+  .qr-row{flex-direction:column;}
+  .qr-box{align-self:flex-start;}
+  .price-grid{grid-template-columns:1fr;}
+  .feat-grid{grid-template-columns:1fr;}
+  .sf-grid{grid-template-columns:1fr;}
+  .metrics{grid-template-columns:repeat(3,1fr);}
+  .cta-btns{flex-direction:column;align-items:center;}
+  .cta-btn,.cta-btn-ghost{width:100%;justify-content:center;}
+}
 </style>
 
 <div class="w">
-  <div class="hero">
-    <div class="logo-row">
-      <div class="logo-b">🍽</div>
-      <div class="logo-t">Bistrobit · Ementa Digital</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo-row">
+    <div class="logo-b">🍽</div>
+    <div class="logo-t">Bistrobit · Ementa Digital</div>
+  </div>
+  <div class="eyebrow">Proposta exclusiva · Petisqueira da Lage</div>
+  <div class="h1">O vosso menu,<br><span>a trabalhar por vocês</span></div>
+  <div class="hsub">Esqueçam o PDF. Uma ementa digital que actualiza em 30 segundos, funciona em qualquer telemóvel e mostra exactamente o que os clientes procuram — com dados reais.</div>
+</div>
+
+<!-- 1. PROVA SOCIAL COM DADOS REAIS -->
+<div class="sec">
+  <div class="lbl">Prova social — dados reais da Tasquinha do Cerqueira</div>
+  <div class="ga-strip">
+    <div class="ga-strip-top">Google Analytics · últimos 28 dias · Apúlia</div>
+    <div class="ga-metrics">
+      <div class="ga-met"><div class="ga-n">893</div><div class="ga-l">utilizadores activos</div></div>
+      <div class="ga-met"><div class="ga-n">872</div><div class="ga-l">novos visitantes</div></div>
+      <div class="ga-met"><div class="ga-n">1m53s</div><div class="ga-l">tempo médio no menu</div></div>
+      <div class="ga-met"><div class="ga-n">8k</div><div class="ga-l">interacções totais</div></div>
     </div>
-    <div class="eyebrow">Proposta · Petisqueira da Lage</div>
-    <div class="h1">O vosso menu,<br><span>a trabalhar por vocês</span></div>
-    <div class="hsub">Esqueçam o PDF. Uma ementa digital que actualiza em 30 segundos, funciona em qualquer telemóvel e diz-vos exactamente o que os clientes procuram.</div>
+    <div class="ga-note"><strong>0% taxa de rejeição</strong> — os clientes ficam no menu, exploram e voltam. Não é uma página estática, é uma ferramenta de vendas.</div>
+  </div>
+  <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Já provado</strong> — em produção diária desde 2025, com dados reais de centenas de clientes por semana.</div></div>
+  <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Gerido pelo staff</strong> — quem usa Excel já sabe gerir a ementa. Zero formação técnica.</div></div>
+  <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Alergénios em conformidade</strong> — Reg. UE 1169/2011 integrado de raiz. Sem PDFs adicionais.</div></div>
+  <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Sem dependências</strong> — código vosso, domínio vosso. Não depende de plataformas externas que mudam preços.</div></div>
+</div>
+
+<!-- 2. ANTES/DEPOIS VISUAL -->
+<div class="sec">
+  <div class="lbl">O problema actual — e a solução</div>
+  <div class="ba-wrap">
+    <div class="ba-col ba-bad">
+      <div class="ba-h">❌ Hoje (PDF Canva)</div>
+      <div class="ba-item">Mudar preço: Canva → exportar → upload</div>
+      <div class="ba-item">Leitão esgotado: não há como avisar</div>
+      <div class="ba-item">Clientes estrangeiros: sem tradução</div>
+      <div class="ba-item">Analítica: zero. Não sabem o que vendem</div>
+    </div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-col ba-good">
+      <div class="ba-h">✅ Com Bistrobit</div>
+      <div class="ba-item">Mudar preço: editar uma célula no Excel</div>
+      <div class="ba-item">Leitão esgotado: marcar SIM numa coluna</div>
+      <div class="ba-item">PT / EN / FR automático com um clique</div>
+      <div class="ba-item">Google Analytics integrado desde o dia 1</div>
+    </div>
+  </div>
+  <div class="ba-note">Para um restaurante com <strong>200+ lugares e take-away</strong>, o "Esgotado hoje" evita em média 15–20 pedidos frustrados por serviço — e o menu trilingue capta clientes que o PDF perde.</div>
+</div>
+
+<!-- 3. QR CODE -->
+<div class="sec">
+  <div class="lbl">Acesso instantâneo — sem app, sem fricção</div>
+  <div class="qr-row">
+    <div class="qr-box">
+      <svg width="80" height="80" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+        <rect width="90" height="90" fill="white"/>
+        <rect x="8" y="8" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
+        <rect x="13" y="13" width="20" height="20" fill="#1a1208"/>
+        <rect x="52" y="8" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
+        <rect x="57" y="13" width="20" height="20" fill="#1a1208"/>
+        <rect x="8" y="52" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
+        <rect x="13" y="57" width="20" height="20" fill="#1a1208"/>
+        <rect x="52" y="52" width="8" height="8" fill="#1a1208"/>
+        <rect x="62" y="52" width="8" height="8" fill="#1a1208"/>
+        <rect x="72" y="52" width="10" height="8" fill="#1a1208"/>
+        <rect x="52" y="62" width="8" height="8" fill="#1a1208"/>
+        <rect x="64" y="62" width="18" height="8" fill="#1a1208"/>
+        <rect x="52" y="72" width="18" height="10" fill="#1a1208"/>
+        <rect x="74" y="72" width="8" height="10" fill="#1a1208"/>
+      </svg>
+    </div>
+    <div class="qr-right">
+      <div class="qr-title">O cliente aponta o telemóvel e o menu abre</div>
+      <div class="qr-step"><div class="qr-num">1</div><div class="qr-text">QR impresso no talher, mesa ou montra</div></div>
+      <div class="qr-step"><div class="qr-num">2</div><div class="qr-text">Cliente aponta a câmara — sem instalar nada</div></div>
+      <div class="qr-step"><div class="qr-num">3</div><div class="qr-text">Menu abre em PT, EN ou FR instantaneamente</div></div>
+      <div class="qr-tags">
+        <span class="qr-tag">Talher</span><span class="qr-tag">Mesa</span><span class="qr-tag">Montra</span><span class="qr-tag">Redes sociais</span><span class="qr-tag">Take-away</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIGITAL SIGNAGE — módulo isolado -->
+<div style="background:var(--bg3);border-top:2px solid var(--amber);border-bottom:2px solid var(--amber);padding:1.4rem 1.5rem;margin:0;">
+  <div class="lbl" style="color:var(--amber);">Módulo opcional · Digital Signage</div>
+  <div class="signage-box">
+    <div class="sig-badge"><i class="ti ti-device-tv" style="font-size:11px"></i> Módulo adicional</div>
+    <div class="sig-title">Ecrãs no restaurante que vendem por vós</div>
+    <div class="sig-sub">Um televisor ou monitor passa automaticamente vídeos de preparação dos pratos, promoções do dia e destaques — sem esforço do staff.</div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb fire"><div class="play-btn"><i class="ti ti-player-play" style="font-size:9px"></i></div></div>
+        <div class="video-label">Leitão a sair do forno</div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb grill"><div class="play-btn"><i class="ti ti-player-play" style="font-size:9px"></i></div></div>
+        <div class="video-label">Churrasco na brasa</div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb prep"><div class="play-btn"><i class="ti ti-player-play" style="font-size:9px"></i></div></div>
+        <div class="video-label">Prato do dia</div>
+      </div>
+    </div>
+  </div>
+  <div class="sf-grid">
+    <div class="sf"><i class="ti ti-device-tv sf-icon"></i><div><div class="sf-t">Qualquer ecrã</div><div class="sf-d">TV, monitor ou tablet. Sem hardware especial.</div></div></div>
+    <div class="sf"><i class="ti ti-clock sf-icon"></i><div><div class="sf-t">Horário programado</div><div class="sf-d">Almoço vs jantar — conteúdo diferente automaticamente.</div></div></div>
+    <div class="sf"><i class="ti ti-refresh sf-icon"></i><div><div class="sf-t">Actualização automática</div><div class="sf-d">Muda com a ementa, sem intervenção do staff.</div></div></div>
+    <div class="sf"><i class="ti ti-chart-bar sf-icon"></i><div><div class="sf-t">Aumenta o ticket médio</div><div class="sf-d">Ver o leitão a sair do forno convence mais que qualquer descrição.</div></div></div>
+  </div>
+</div>
+
+<!-- FUNCIONALIDADES -->
+<div class="sec">
+  <div class="lbl">O que fica disponível na ementa digital</div>
+
+  <!-- Por produto / categoria -->
+  <div class="feat-group-title">Por produto e categoria</div>
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-icon">✨</div><div class="feat-t">Novidades com badge</div><div class="feat-d">Marcar novidades na ementa com badge verde automático. Visível de imediato ao cliente.</div></div>
+    <div class="feat"><div class="feat-icon">⭐</div><div class="feat-t">Destaque por categoria</div><div class="feat-d">Cada secção pode ter um card premium — leitão, peixe do dia, espumante em destaque.</div></div>
+    <div class="feat"><div class="feat-icon">💰</div><div class="feat-t">Até 3 preços por prato</div><div class="feat-d">Dose, meia dose e dose criança — tudo visível e com etiqueta clara para o cliente.</div></div>
+    <div class="feat"><div class="feat-icon">⛔</div><div class="feat-t">Esgotado hoje</div><div class="feat-d">Staff marca no Excel. Aparece no menu de imediato, sem reimprimir nada.</div></div>
+    <div class="feat"><div class="feat-icon">📋</div><div class="feat-t">Por encomenda</div><div class="feat-d">Pratos como leitão inteiro ficam visíveis com card especial de encomenda.</div></div>
+    <div class="feat"><div class="feat-icon">🟡</div><div class="feat-t">Só ao domingo</div><div class="feat-d">Pratos de domingo aparecem apenas nesse dia — automático, sem intervenção.</div></div>
   </div>
 
-  <div class="sec">
-    <div class="lbl">O problema actual</div>
-    <div class="cmp">
-      <div class="cmp-col cmp-bad">
-        <div class="cmp-h">Hoje (PDF Canva)</div>
-        <div class="cmp-i">Mudar preço: Canva → exportar → upload</div>
-        <div class="cmp-i">Frango esgotado: não há como avisar</div>
-        <div class="cmp-i">Clientes estrangeiros: sem tradução</div>
-        <div class="cmp-i">Analises sobre os menus mais consultados: Zero</div>
-        <div class="cmp-i">Sempre que mudo a ementa, há necessidade de novas impressões.</div>
-      </div>
-      <div class="cmp-col cmp-good">
-        <div class="cmp-h">Com Bistrobit</div>
-        <div class="cmp-i">Mudar preço: editar uma célula no Excel</div>
-        <div class="cmp-i">Frango esgotado: marcar SIM numa coluna</div>
-        <div class="cmp-i">Tradução PT / EN / FR automático do nome e descritivo dos pratos.</div>
-        <div class="cmp-i">Google Analytics Totalmente Integrado</div>
-        <div class="cmp-i">Não há necessidade imediata de papel físico.</div>
-      </div>
-    </div>
+  <!-- Experiência do cliente -->
+  <div class="feat-group-title" style="margin-top:1rem;">Experiência do cliente</div>
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-icon"><i class="ti ti-search"></i></div><div class="feat-t">Pesquisa em tempo real</div><div class="feat-d">Por prato, ingrediente ou alergénio. Essencial para famílias e clientes com restrições.</div></div>
+    <div class="feat"><div class="feat-icon"><i class="ti ti-dice"></i></div><div class="feat-t">Surpreende-me</div><div class="feat-d">Sugere refeição completa com pré-selecção Carne / Peixe. Toque premium diferenciador.</div></div>
+    <div class="feat"><div class="feat-icon"><i class="ti ti-world"></i></div><div class="feat-t">PT / EN / FR</div><div class="feat-d">O cliente escolhe a língua. O menu adapta-se por completo, incluindo alergénios.</div></div>
+    <div class="feat"><div class="feat-icon"><i class="ti ti-filter"></i></div><div class="feat-t">Filtros por tipo</div><div class="feat-d">Vinhos por Branco / Tinto / Rosé, cervejas, digestivos — navegação intuitiva.</div></div>
   </div>
 
-  <!-- QR CODE SECTION -->
-  <div class="sec">
-    <div class="lbl">Acesso instantâneo — sem app, sem fricção</div>
-    <div class="qr-row">
-      <div class="qr-box">
-        <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-          <rect width="90" height="90" fill="white"/>
-          <rect x="8" y="8" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
-          <rect x="13" y="13" width="20" height="20" fill="#1a1208"/>
-          <rect x="52" y="8" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
-          <rect x="57" y="13" width="20" height="20" fill="#1a1208"/>
-          <rect x="8" y="52" width="30" height="30" fill="none" stroke="#1a1208" stroke-width="3"/>
-          <rect x="13" y="57" width="20" height="20" fill="#1a1208"/>
-          <rect x="52" y="52" width="8" height="8" fill="#1a1208"/>
-          <rect x="62" y="52" width="8" height="8" fill="#1a1208"/>
-          <rect x="72" y="52" width="10" height="8" fill="#1a1208"/>
-          <rect x="52" y="62" width="8" height="8" fill="#1a1208"/>
-          <rect x="64" y="62" width="18" height="8" fill="#1a1208"/>
-          <rect x="52" y="72" width="18" height="10" fill="#1a1208"/>
-          <rect x="74" y="72" width="8" height="10" fill="#1a1208"/>
-        </svg>
-      </div>
-      <div class="qr-right">
-        <div class="qr-title">O cliente aponta o telemóvel e o menu abre</div>
-        <div class="qr-steps">
-          <div class="qr-step"><div class="qr-num">1</div><div class="qr-text">QR code impresso no talher, na mesa ou na montra</div></div>
-          <div class="qr-step"><div class="qr-num">2</div><div class="qr-text">Cliente aponta a câmara — sem instalar nada</div></div>
-          <div class="qr-step"><div class="qr-num">3</div><div class="qr-text">Menu abre instantaneamente em PT, EN ou FR</div></div>
-        </div>
-        <div class="qr-where">
-          <div class="qr-where-t">Onde colocar o QR</div>
-          <div class="qr-where-items">
-            <span class="qr-tag">Toalhetes de papel</span>
-            <span class="qr-tag">Porta-palitos</span>
-            <span class="qr-tag">Montra</span>
-            <span class="qr-tag">Redes sociais</span>
-            <span class="qr-tag">Take-away</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="metrics">
+    <div class="met"><div class="met-n">30s</div><div class="met-l">para actualizar qualquer preço ou prato</div></div>
+    <div class="met"><div class="met-n">0€</div><div class="met-l">custo de hosting por mês</div></div>
+    <div class="met"><div class="met-n">8k</div><div class="met-l">interacções em 28 dias na Tasquinha</div></div>
   </div>
+</div>
 
-  <!-- DIGITAL SIGNAGE SECTION -->
-  <div class="sec">
-    <div class="lbl">Digital Signage — o próximo passo</div>
-    <div class="signage-hero">
-      <div class="signage-badge">
-        <i class="ti ti-device-tv" style="font-size:13px" aria-hidden="true"></i>
-        Módulo adicional
-      </div>
-      <div class="signage-title">Ecrãs no restaurante que vendem por vós</div>
-      <div class="signage-sub">Um televisor ou monitor na sala passa automaticamente vídeos curtos de preparação dos pratos, promoções do dia e destaques da ementa — sem esforço do staff.</div>
-      <div class="video-grid">
-        <div class="video-card">
-          <div class="video-thumb fire">
-            <div class="play-btn"><i class="ti ti-player-play" style="font-size:10px" aria-hidden="true"></i></div>
-          </div>
-          <div class="video-label">Leitão a sair do forno</div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb grill">
-            <div class="play-btn"><i class="ti ti-player-play" style="font-size:10px" aria-hidden="true"></i></div>
-          </div>
-          <div class="video-label">Churrasco a ser preparado</div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb prep">
-            <div class="play-btn"><i class="ti ti-player-play" style="font-size:10px" aria-hidden="true"></i></div>
-          </div>
-          <div class="video-label">Prato do dia em close-up</div>
-        </div>
-      </div>
+<!-- 5. PREÇÁRIO -->
+<div class="sec">
+  <div class="lbl">Investimento — transparente desde o início</div>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-badge">Ementa Digital</div>
+      <div class="price-n">499<span class="price-per">€</span></div>
+      <div class="price-desc">Setup completo, personalizado com o vosso branding.</div>
+      <div class="price-item"><span class="price-dot"></span>Design adaptado à Petisqueira da Lage</div>
+      <div class="price-item"><span class="price-dot"></span>Trilingue PT / EN / FR</div>
+      <div class="price-item"><span class="price-dot"></span>Alergénios integrados (UE 1169/2011)</div>
+      <div class="price-item"><span class="price-dot"></span>Google Analytics configurado</div>
+      <div class="price-item"><span class="price-dot"></span>Surpreende-me, pesquisa, esgotado</div>
+      <div class="price-item"><span class="price-dot"></span>Domínio próprio incluído (1 ano)</div>
     </div>
-    <div class="signage-features">
-      <div class="sf">
-        <i class="ti ti-device-tv sf-icon" aria-hidden="true"></i>
-        <div><div class="sf-t">Qualquer ecrã</div><div class="sf-d">TV, monitor ou tablet. Sem hardware especial.</div></div>
-      </div>
-      <div class="sf">
-        <i class="ti ti-refresh sf-icon" aria-hidden="true"></i>
-        <div><div class="sf-t">Actualização automática</div><div class="sf-d">Conteúdo muda com a ementa, sem intervenção.</div></div>
-      </div>
-      <div class="sf">
-        <i class="ti ti-clock sf-icon" aria-hidden="true"></i>
-        <div><div class="sf-t">Horário programado</div><div class="sf-d">Almoço vs jantar — conteúdo diferente automaticamente.</div></div>
-      </div>
-      <div class="sf">
-        <i class="ti ti-chart-bar sf-icon" aria-hidden="true"></i>
-        <div><div class="sf-t">Aumenta o ticket médio</div><div class="sf-d">Ver o leitão a sair do forno convence melhor que qualquer descrição.</div></div>
-      </div>
+    <div class="price-card featured">
+      <div class="price-badge">✦ Recomendado</div>
+      <div class="price-n">499<span class="price-per">€</span> <span style="font-size:.9rem;opacity:.7">+ 29€/mês</span></div>
+      <div class="price-desc">Tudo do plano base, com suporte e actualizações contínuas.</div>
+      <div class="price-item"><span class="price-dot"></span>Tudo do plano base</div>
+      <div class="price-item"><span class="price-dot"></span>Actualizações de funcionalidades</div>
+      <div class="price-item"><span class="price-dot"></span>Suporte prioritário</div>
+      <div class="price-item"><span class="price-dot"></span>Renovação de domínio incluída</div>
+      <div class="price-item"><span class="price-dot"></span>Novos módulos sem custo adicional</div>
     </div>
   </div>
+  <div class="price-note"><strong>Sem letras pequenas.</strong> Sem contratos de fidelização. Se decidirem parar, o código e o domínio ficam vossos. Sempre.</div>
+</div>
 
-  <div class="sec">
-    <div class="lbl">O que fica disponível na ementa digital</div>
-    <div class="grid2">
-      <div class="card">
-        <div class="card-icon"><i class="ti ti-search" aria-hidden="true"></i></div>
-        <div class="card-t">Pesquisa em tempo real</div>
-        <div class="card-d">Por prato, ingrediente ou alergénio.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="ti ti-ban" aria-hidden="true"></i></div>
-        <div class="card-t">Esgotado hoje</div>
-        <div class="card-d">Staff marca no Excel, aparece de imediato.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="ti ti-dice" aria-hidden="true"></i></div>
-        <div class="card-t">Surpreende-me</div>
-        <div class="card-d">Sugestão de refeição completa. Premium.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="ti ti-world" aria-hidden="true"></i></div>
-        <div class="card-t">PT / EN / FR</div>
-        <div class="card-d">O cliente escolhe a língua com um clique.</div>
-      </div>
-    </div>
-    <div class="metrics">
-      <div class="met"><div class="met-n">30s</div><div class="met-l">para actualizar qualquer preço</div></div>
-      <div class="met"><div class="met-n">0€</div><div class="met-l">custo de hosting por mês</div></div>
-      <div class="met"><div class="met-n">200+</div><div class="met-l">lugares, um único menu digital</div></div>
+<!-- 4. CTA -->
+<div class="sec">
+  <div class="cta-box">
+    <div class="cta-t">15 minutos para ver o demo ao vivo</div>
+    <div class="cta-s">Preparámos uma versão já adaptada à Petisqueira da Lage, com a vossa ementa, o vosso logo e o vosso branding. Podem ver agora, sem compromissos.</div>
+    <div class="cta-btns">
+      <a class="cta-btn" href="https://petisqueiralage.bistrobit.fyi/Lage/Prod/menu.html" target="_blank"><i class="ti ti-eye" style="font-size:14px"></i> Ver demo ao vivo</a>
+      <a class="cta-btn-ghost" href="https://wa.me/351910403608" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:14px"></i> Agendar 15 min</a>
     </div>
   </div>
+</div>
 
-  <div class="sec">
-    <div class="lbl">Porquê agora</div>
-    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Já provado</strong> — Estabelecimentos de renome na restauranção, usam este sistema todos os dias.</div></div>
-    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Gerido pelo staff</strong> — Quem usa Excel já sabe gerir a ementa. Zero formação técnica necessária.</div></div>
-    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Alergénios em conformidade</strong> — Reg. UE 1169/2011 integrado de raiz.</div></div>
-    <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Sem dependências</strong> — Código vosso, domínio vosso. Não depende de plataformas externas.</div></div>
-  </div>
+<div class="foot">
+  <div class="foot-t">Desenvolvido por <span class="foot-b">Bistrobit</span> · bistrobit.fyi · Braga, Portugal</div>
+</div>
 
-  <div class="sec">
-    <div class="cta-box">
-      <div class="cta-t">Ver o demo em funcionamento</div>
-      <div class="cta-s">Preparámos uma versão adaptada à Petisqueira da Lage.<br>Sem compromissos.</div>
-      <a class="cta-btn" href="https://petisqueiralage.bistrobit.fyi/Lage/Prod/menu.html" target="_blank">Ver demo ao vivo</a>
-    </div>
-  </div>
-
-  <div class="foot">
-    <div class="foot-t">Desenvolvido por <span class="foot-b" href="https://bistrobit.fyi/">Bistrobit</span> · bistrobit.fyi · Braga, Portugal</div>
-  </div>
 </div>
