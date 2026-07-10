@@ -12,7 +12,7 @@
   --green:#2d7a3a;--red:#8a2e18;
 }
 
-.w{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);}
+.w{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);width:100%;}
 
 /* HERO */
 .inner{max-width:680px;margin:0 auto;}
@@ -26,13 +26,13 @@
 .hsub{font-size:.88rem;color:var(--muted);line-height:1.7;}
 
 /* SECTIONS */
-.sec{padding:1.4rem 1.5rem;background:var(--bg);}
+.sec{padding:1.4rem 1.5rem;background:var(--bg);position:relative;z-index:0;}
 .sec+.sec{border-top:1px solid var(--border);}
 .lbl{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.8rem;}
 .sec-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
 
 /* PROOF SOCIAL — DESTAQUE */
-.ga-strip{background:linear-gradient(135deg,var(--brown-d),var(--brown));border-radius:12px;padding:1.2rem 1.3rem;margin-bottom:.8rem;}
+.ga-strip{background:linear-gradient(135deg,var(--brown-d),var(--brown));border-radius:8px;padding:1.2rem 1.3rem;margin-bottom:.8rem;overflow:hidden;}
 .ga-strip-top{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.8rem;font-weight:600;}
 .ga-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;}
 .ga-met{text-align:center;}
@@ -98,7 +98,7 @@
 .met-l{font-size:.6rem;color:var(--muted);margin-top:.18rem;line-height:1.3;}
 
 /* PROVA */
-.proof-row{display:flex;align-items:flex-start;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--border);}
+.proof-row{display:flex;align-items:flex-start;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--border);background:var(--bg);}
 .proof-row:last-child{border:none;}
 .pchk{width:20px;height:20px;border-radius:50%;background:rgba(45,122,58,.1);border:1px solid rgba(45,122,58,.3);display:flex;align-items:center;justify-content:center;font-size:.62rem;flex-shrink:0;color:var(--green);}
 .ptxt{font-size:.82rem;color:var(--muted);line-height:1.45;}
@@ -135,17 +135,17 @@
 
 /* FOOTER */
 .foot{background:var(--bg3);padding:.8rem 1.5rem;text-align:center;border-top:1px solid var(--border);}
-@media(min-width:680px){.w{max-width:680px;margin:0 auto;}}
+@media(min-width:700px){.w{max-width:680px;margin:0 auto;}}
 .foot-t{font-size:.66rem;color:var(--muted);letter-spacing:.05em;}
 .foot-b{color:var(--brown);font-weight:600;}
 
 .signage-isolated{background:var(--bg3);border-top:2px solid var(--amber);border-bottom:2px solid var(--amber);padding:1.4rem 1.5rem;margin:0;}
 
 /* MOBILE */
-@media(max-width:680px){
+@media(max-width:700px){
   .hero{padding:1.2rem 1rem 1.2rem;}
-  .sec{padding:1.1rem 1rem;}
-  .signage-isolated{padding:1.1rem 1rem;}
+  .sec{padding:1rem;}
+  .signage-isolated{padding:1rem;}
   .h1{font-size:1.4rem;}
   .ga-metrics{grid-template-columns:repeat(2,1fr);gap:.4rem;}
   .ba-wrap{grid-template-columns:1fr;gap:.4rem;}
@@ -189,12 +189,15 @@
       <div class="ga-met"><div class="ga-n">872</div><div class="ga-l">novos visitantes</div></div>
       <div class="ga-met"><div class="ga-n">1m53s</div><div class="ga-l">tempo médio no menu</div></div>
       <div class="ga-met"><div class="ga-n">8000</div><div class="ga-l">interacções totais (60 dias)</div></div>
+    </div>
     <div class="ga-note"><strong>0% taxa de rejeição</strong> — os clientes ficam no menu, exploram e voltam. Não é uma página estática, é uma ferramenta de vendas.</div>
   </div>
+  <div style="margin-top:.6rem;">
   <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Conceito aprovado</strong> — em produção diária desde 2025, com dados reais de centenas de clientes por semana.</div></div>
   <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Gerido pelo staff</strong> — quem usa Excel já sabe gerir a ementa. Zero formação técnica.</div></div>
   <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Alergénios em conformidade</strong> — Reg. UE 1169/2011 integrado de raiz. Sem PDFs adicionais.</div></div>
   <div class="proof-row"><div class="pchk">✓</div><div class="ptxt"><strong>Sem dependências</strong> — código vosso, domínio vosso. Não depende de plataformas externas que mudam preços.</div></div>
+  </div>
 </div>
 
 <!-- 2. ANTES/DEPOIS VISUAL -->
